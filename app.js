@@ -24,17 +24,24 @@
     const points = driver.results.reduce((sum, result) => sum + result.points, 0);
     const finishes = driver.results.filter((result) => result.status === "finished" && result.position);
     const raceFinishes = finishes.filter((result) => result.type === "R");
+    const sessionStats = {
+      R: summarizeSession(driver.results, "R"),
+      SR: summarizeSession(driver.results, "SR")
+    };
     const wins = raceFinishes.filter((result) => result.position === 1).length;
     const podiums = raceFinishes.filter((result) => result.position <= 3).length;
     const bestFinish = raceFinishes.length ? Math.min(...raceFinishes.map((result) => result.position)) : null;
     const averageFinish = raceFinishes.length ? raceFinishes.reduce((sum, result) => sum + result.position, 0) / raceFinishes.length : null;
-    return { ...driver, points, wins, podiums, dnfs: driver.results.filter((result) => result.status === "DNF").length, starts: raceFinishes.length, bestFinish, averageFinish };
+    return { ...driver, points, wins, podiums, dnfs: driver.results.filter((result) => result.status === "DNF").length, starts: raceFinishes.length, bestFinish, averageFinish, sessionStats };
   }).sort((a, b) => b.points - a.points || b.wins - a.wins || (a.bestFinish || 99) - (b.bestFinish || 99) || a.driver.localeCompare(b.driver));
 
   const rankByDriver = new Map(drivers.map((driver, index) => [driver.driver, index + 1]));
   const head = document.querySelector("#standings-head");
   const body = document.querySelector("#standings-body");
   const modal = document.querySelector("#driver-modal");
+  const statsTabs = [...document.querySelectorAll("#stats-tabs [data-session-type]")];
+  let activeSessionType = "R";
+  let activeDriver = null;
 
   head.innerHTML = `<tr>
     <th scope="col" rowspan="2">Pos</th><th scope="col" rowspan="2" class="driver-head">Driver</th><th scope="col" rowspan="2" class="points-head">Points</th><th class="standings-spacer" rowspan="2" aria-hidden="true"></th>
@@ -55,6 +62,11 @@
   document.querySelector("#updated-note").textContent = data.lastUpdated ? `Last updated · ${data.lastUpdated}` : "";
 
   document.querySelectorAll("[data-driver]").forEach((button) => button.addEventListener("click", () => openModal(button.dataset.driver)));
+  statsTabs.forEach((tab) => tab.addEventListener("click", () => {
+    activeSessionType = tab.dataset.sessionType;
+    updateStatsTabState();
+    if (activeDriver) renderModalStats(activeDriver, activeSessionType);
+  }));
   document.querySelector("#modal-close").addEventListener("click", closeModal);
   modal.addEventListener("click", (event) => { if (event.target === modal) closeModal(); });
   document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !modal.hidden) closeModal(); });
@@ -62,6 +74,20 @@
   function numericPoints(value) {
     const points = Number(value);
     return Number.isFinite(points) ? points : 0;
+  }
+
+  function summarizeSession(results, type) {
+    const sessionResults = results.filter((result) => result.type === type);
+    const finishes = sessionResults.filter((result) => result.status === "finished" && result.position);
+    return {
+      points: sessionResults.reduce((sum, result) => sum + result.points, 0),
+      wins: finishes.filter((result) => result.position === 1).length,
+      podiums: finishes.filter((result) => result.position <= 3).length,
+      bestFinish: finishes.length ? Math.min(...finishes.map((result) => result.position)) : null,
+      starts: sessionResults.filter((result) => result.status !== "DNS").length,
+      dnfs: sessionResults.filter((result) => result.status === "DNF").length,
+      averageFinish: finishes.length ? finishes.reduce((sum, result) => sum + result.position, 0) / finishes.length : null
+    };
   }
 
   function canonicalName(name) {
@@ -81,7 +107,10 @@
 
   function renderResultCell(driver, column) {
     const result = findResult(driver, column);
-    if (!result) return `<td class="race-cell status" title="Did not start">DNS</td>`;
+    if (!result) {
+      const pending = column.event.placeholder && !(column.event.results || []).length;
+      return `<td class="race-cell status" title="${pending ? "Result pending" : "Did not start"}">${pending ? "—" : "DNS"}</td>`;
+    }
     if (result.status !== "finished") return `<td class="race-cell status" title="Did not finish">${result.status}</td>`;
     const medal = result.position && result.position <= 3 ? ["gold", "silver", "bronze"][result.position - 1] : "";
     const label = result.position ? result.position : "—";
@@ -92,22 +121,39 @@
     const driver = allDrivers.get(name);
     if (!driver) return;
     const computed = drivers.find((item) => item.driver === name);
+    activeDriver = computed;
+    activeSessionType = "R";
     document.querySelector("#modal-driver-name").textContent = driver.driver;
     document.querySelector("#modal-driver-team").textContent = driver.team;
-    document.querySelector("#modal-stats").innerHTML = [
-      ["Points", computed.points], ["Wins", computed.wins], ["Podiums", computed.podiums], ["Best finish", computed.bestFinish ? `P${computed.bestFinish}` : "—"],
-      ["Starts", computed.starts], ["DNFs", computed.dnfs], ["Avg race finish", computed.averageFinish ? computed.averageFinish.toFixed(1) : "—"], ["Championship", `P${rankByDriver.get(driver.driver)}`]
-    ].map(([label, value]) => `<div class="driver-stat"><span class="driver-stat-label">${label}</span><strong class="driver-stat-value">${value}</strong></div>`).join("");
+    updateStatsTabState();
+    renderModalStats(computed, activeSessionType);
     document.querySelector("#modal-results").innerHTML = columns.map((column) => {
       const result = findResult(driver, column);
       const medal = result?.position && result.position <= 3 ? ["gold", "silver", "bronze"][result.position - 1] : "";
-      const label = !result ? "DNS" : result.status !== "finished" ? result.status : result.position ? `P${result.position}` : "—";
+      const pending = column.event.placeholder && !(column.event.results || []).length;
+      const label = !result ? (pending ? "—" : "DNS") : result.status !== "finished" ? result.status : result.position ? `P${result.position}` : "—";
       return `<span class="result-chip ${medal}"><img class="chip-flag" src="assets/flags/${column.race.country}.svg" alt="${escapeHtml(column.race.countryName)}" /><strong>R${column.race.round} ${column.event.type}</strong> ${label}</span>`;
     }).join("");
     drawChart(driver);
     modal.hidden = false;
     document.body.style.overflow = "hidden";
     document.querySelector("#modal-close").focus();
+  }
+
+  function updateStatsTabState() {
+    statsTabs.forEach((tab) => {
+      const selected = tab.dataset.sessionType === activeSessionType;
+      tab.setAttribute("aria-selected", String(selected));
+    });
+    document.querySelector("#modal-stats").setAttribute("aria-labelledby", `${activeSessionType === "R" ? "race" : "sprint"}-stats-tab`);
+  }
+
+  function renderModalStats(computed, type) {
+    const stats = computed.sessionStats[type];
+    document.querySelector("#modal-stats").innerHTML = [
+      ["Points", stats.points], ["Wins", stats.wins], ["Podiums", stats.podiums], ["Best finish", stats.bestFinish ? `P${stats.bestFinish}` : "—"],
+      ["Starts", stats.starts], ["DNFs", stats.dnfs], ["Avg finish", stats.averageFinish ? stats.averageFinish.toFixed(1) : "—"], ["Championship", `P${rankByDriver.get(computed.driver)}`]
+    ].map(([label, value]) => `<div class="driver-stat"><span class="driver-stat-label">${label}</span><strong class="driver-stat-value">${value}</strong></div>`).join("");
   }
 
   function closeModal() { modal.hidden = true; document.body.style.overflow = ""; }
@@ -121,7 +167,12 @@
     const yFor = (position) => pad.top + (position - 1) * (height - pad.top - pad.bottom) / (maxPosition - 1);
     const yTicks = [1, Math.ceil(maxPosition / 2), maxPosition].filter((value, index, array) => array.indexOf(value) === index);
     const grid = yTicks.map((value) => `<line x1="${pad.left}" x2="${width - pad.right}" y1="${yFor(value)}" y2="${yFor(value)}" stroke="#2b3544"/><text x="4" y="${yFor(value) + 4}" fill="#778196" font-size="10">P${value}</text>`).join("");
-    const labels = raceColumns.map((column, index) => `<text x="${xFor(index)}" y="${height - 7}" text-anchor="middle" fill="#778196" font-size="10">${column.event.type}${column.race.round}</text>`).join("");
+    const labels = raceColumns.map((column, index) => {
+      const x = xFor(index);
+      const flag = `assets/flags/${column.race.country}.svg`;
+      const session = `${column.race.name} ${column.event.type}`;
+      return `<image href="${escapeHtml(flag)}" x="${x - 8}" y="${height - 29}" width="16" height="11" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${escapeHtml(session)}"><title>${escapeHtml(session)}</title></image><text x="${x}" y="${height - 7}" text-anchor="middle" fill="#778196" font-size="10">${column.event.type}</text>`;
+    }).join("");
     const path = raceResults.map((item, index) => `${index ? "L" : "M"}${xFor(raceColumns.indexOf(item.column))},${yFor(item.result.position)}`).join(" ");
     const dots = raceResults.map((item) => `<circle cx="${xFor(raceColumns.indexOf(item.column))}" cy="${yFor(item.result.position)}" r="5" fill="#ef4b55" stroke="#171d28" stroke-width="3"><title>${escapeHtml(item.column.race.name)}: P${item.result.position}</title></circle>`).join("");
     document.querySelector("#position-chart").innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(driver.driver)} race finishing positions">${grid}${path ? `<path d="${path}" fill="none" stroke="#ef4b55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>` : ""}${dots}${labels}</svg>`;

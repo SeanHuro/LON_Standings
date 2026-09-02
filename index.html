@@ -29,7 +29,7 @@
             <span id="leader-points" class="summary-detail">— points</span>
           </article>
           <article class="summary-card">
-            <span class="summary-label">Rounds logged</span>
+            <span class="summary-label">Rounds listed</span>
             <strong id="round-count">0</strong>
             <span class="summary-detail">of the season</span>
           </article>
@@ -82,7 +82,11 @@
         <button class="close-button" id="modal-close" type="button" aria-label="Close driver details">×</button>
         <div class="modal-kicker" id="modal-driver-team">—</div>
         <h2 id="modal-driver-name">—</h2>
-        <div class="driver-stat-grid" id="modal-stats"></div>
+        <div class="stats-tabs" id="stats-tabs" role="tablist" aria-label="Session statistics">
+          <button class="stats-tab" id="race-stats-tab" type="button" role="tab" aria-selected="true" aria-controls="modal-stats" data-session-type="R">Races</button>
+          <button class="stats-tab" id="sprint-stats-tab" type="button" role="tab" aria-selected="false" aria-controls="modal-stats" data-session-type="SR">Sprints</button>
+        </div>
+        <div class="driver-stat-grid" id="modal-stats" role="tabpanel" aria-labelledby="race-stats-tab" tabindex="0"></div>
         <div class="chart-section">
           <div class="chart-heading">
             <div>

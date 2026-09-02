@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" role="img" aria-label="Great Britain">
+  <rect width="96" height="64" rx="4" fill="#012169"/>
+  <path d="m0 0 96 64M96 0 0 64" stroke="#fff" stroke-width="14"/>
+  <path d="m0 0 96 64M96 0 0 64" stroke="#c8102e" stroke-width="6"/>
+  <path d="M40 0h16v64H40zM0 24h96v16H0z" fill="#fff"/>
+  <path d="M43 0h10v64H43zM0 27h96v10H0z" fill="#c8102e"/>
+</svg>

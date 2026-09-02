@@ -14,3 +14,5 @@ For the chat-first workflow, attach the screenshot directly and ask Codex to run
 Race columns use local SVG flags from `assets/flags/`. Add a new flag file when a race is held in a country that is not already present, then set that race's `country` value to the filename without `.svg`.
 
 Each round can contain an `SR` sprint event and an `R` race event. The app converts their points into finishing positions using the scoring tables at the top of `data/races.js`.
+
+Future calendar events can be listed with `placeholder: true` and an empty `results` array. These cells display `—` until classifications are added; once a placeholder receives results, missing drivers follow the normal `DNS` behavior.
