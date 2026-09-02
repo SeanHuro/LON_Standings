@@ -166,16 +166,16 @@
     const xFor = (index) => pad.left + (raceColumns.length === 1 ? (width - pad.left - pad.right) / 2 : index * (width - pad.left - pad.right) / (raceColumns.length - 1));
     const yFor = (position) => pad.top + (position - 1) * (height - pad.top - pad.bottom) / (maxPosition - 1);
     const yTicks = [1, Math.ceil(maxPosition / 2), maxPosition].filter((value, index, array) => array.indexOf(value) === index);
-    const grid = yTicks.map((value) => `<line x1="${pad.left}" x2="${width - pad.right}" y1="${yFor(value)}" y2="${yFor(value)}" stroke="#2b3544"/><text x="4" y="${yFor(value) + 4}" fill="#778196" font-size="10">P${value}</text>`).join("");
+    const grid = yTicks.map((value) => `<line x1="${pad.left}" x2="${width - pad.right}" y1="${yFor(value)}" y2="${yFor(value)}" stroke="#303039"/><text x="4" y="${yFor(value) + 4}" fill="#6c6d76" font-size="10">P${value}</text>`).join("");
     const labels = raceColumns.map((column, index) => {
       const x = xFor(index);
       const flag = `assets/flags/${column.race.country}.svg`;
       const session = `${column.race.name} ${column.event.type}`;
-      return `<image href="${escapeHtml(flag)}" x="${x - 8}" y="${height - 29}" width="16" height="11" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${escapeHtml(session)}"><title>${escapeHtml(session)}</title></image><text x="${x}" y="${height - 7}" text-anchor="middle" fill="#778196" font-size="10">${column.event.type}</text>`;
+      return `<image href="${escapeHtml(flag)}" x="${x - 8}" y="${height - 29}" width="16" height="11" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${escapeHtml(session)}"><title>${escapeHtml(session)}</title></image><text x="${x}" y="${height - 7}" text-anchor="middle" fill="#6c6d76" font-size="10">${column.event.type}</text>`;
     }).join("");
     const path = raceResults.map((item, index) => `${index ? "L" : "M"}${xFor(raceColumns.indexOf(item.column))},${yFor(item.result.position)}`).join(" ");
-    const dots = raceResults.map((item) => `<circle cx="${xFor(raceColumns.indexOf(item.column))}" cy="${yFor(item.result.position)}" r="5" fill="#ef4b55" stroke="#171d28" stroke-width="3"><title>${escapeHtml(item.column.race.name)}: P${item.result.position}</title></circle>`).join("");
-    document.querySelector("#position-chart").innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(driver.driver)} race finishing positions">${grid}${path ? `<path d="${path}" fill="none" stroke="#ef4b55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>` : ""}${dots}${labels}</svg>`;
+    const dots = raceResults.map((item) => `<circle cx="${xFor(raceColumns.indexOf(item.column))}" cy="${yFor(item.result.position)}" r="5" fill="#e10600" stroke="#15151a" stroke-width="3"><title>${escapeHtml(item.column.race.name)}: P${item.result.position}</title></circle>`).join("");
+    document.querySelector("#position-chart").innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(driver.driver)} race finishing positions">${grid}${path ? `<path d="${path}" fill="none" stroke="#e10600" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>` : ""}${dots}${labels}</svg>`;
   }
 
   function escapeHtml(value) { return String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[character])); }

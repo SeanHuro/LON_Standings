@@ -3,19 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#10151f" />
+    <meta name="theme-color" content="#070709" />
     <title>LON Racing League | Driver standings</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="page-shell">
       <header class="site-header">
-        <div>
-          <p class="eyebrow">LON Racing League <span>·</span> F1 2026</p>
-          <h1>Driver standings</h1>
+        <div class="header-copy">
+          <p class="eyebrow"><span class="eyebrow-mark">16</span> LON Racing League <span>·</span> F1 2026</p>
+          <h1>Driver <span>standings</span></h1>
           <p class="lede">One table for the championship. Click a driver to see the season so far.</p>
+          <div class="header-chips" aria-label="Championship status">
+            <span>Race control</span>
+            <span>Live classification</span>
+          </div>
         </div>
         <div class="header-mark" aria-hidden="true">
+          <span class="mark-label">Season</span>
           <span class="mark-line"></span>
           <span class="mark-number">26</span>
         </div>
@@ -23,17 +28,17 @@
 
       <main>
         <section class="summary-grid" aria-label="Championship summary">
-          <article class="summary-card">
+          <article class="summary-card summary-card-leader">
             <span class="summary-label">Leader</span>
             <strong id="leader-name">—</strong>
             <span id="leader-points" class="summary-detail">— points</span>
           </article>
-          <article class="summary-card">
+          <article class="summary-card summary-card-rounds">
             <span class="summary-label">Rounds listed</span>
             <strong id="round-count">0</strong>
             <span class="summary-detail">of the season</span>
           </article>
-          <article class="summary-card">
+          <article class="summary-card summary-card-drivers">
             <span class="summary-label">Drivers</span>
             <strong id="driver-count">0</strong>
             <span class="summary-detail">in the championship</span>
@@ -43,10 +48,10 @@
         <section class="standings-panel" aria-labelledby="standings-title">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Championship</p>
+              <p class="eyebrow"><span class="eyebrow-mark">02</span> Championship</p>
               <h2 id="standings-title">The table</h2>
             </div>
-            <p class="table-note">Scroll sideways on smaller screens</p>
+            <p class="table-note"><span class="status-light"></span> Scroll sideways on smaller screens</p>
           </div>
 
           <div class="table-wrap">
