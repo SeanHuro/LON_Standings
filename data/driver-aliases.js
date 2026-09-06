@@ -14,5 +14,8 @@ window.driverAliases = {
   "Cagerman86": "Cageman",
   "nikid1979": "Niki",
   "BrutusBonyap": "Brutus",
-  "I_Ieeman": "Leeman"
+  "I_Ieeman": "Leeman",
+  "Guest21212143321": "Drippy",
+  "Hooverznut": "Hoover",
+  "HocusBiokus": "Hocus"
 };

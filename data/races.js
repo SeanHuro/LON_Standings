@@ -8,10 +8,9 @@
 window.leagueData = {
   season: "F1 2026",
   leagueName: "LON Racing League",
-  lastUpdated: "Calendar loaded · results through Round 2",
+  lastUpdated: "Calendar loaded · results through Round 3",
   scoring: {
-    // This league's example uses zero points for 10th place.
-    R: [25, 18, 15, 12, 10, 8, 6, 4, 2, 0],
+    R: [25, 18, 15, 12, 10, 8, 6, 4, 2, 1],
     SR: [8, 7, 6, 5, 4, 3, 2, 1]
   },
   drivers: [
@@ -26,7 +25,9 @@ window.leagueData = {
     { driver: "Cagerman86", team: "Scuderia Ferrari HP" },
     { driver: "nikid1979", team: "Oracle Red Bull Racing" },
     { driver: "BrutusBonyap", team: "McLaren" },
-    { driver: "I_Ieeman", team: "McLaren" }
+    { driver: "I_Ieeman", team: "McLaren" },
+    { driver: "Hoover", team: "Mercedes-AMG F1 Team" },
+    { driver: "Hocus", team: "Mercedes-AMG F1 Team" }
   ],
   races: [
     {
@@ -48,7 +49,7 @@ window.leagueData = {
             { driver: "XIDrippyIX", team: "Visa Cash App Racing Bulls", grid: 6, points: 6, status: "finished" },
             { driver: "seantrucura", team: "Aston Martin Aramco", grid: 5, points: 4, status: "finished" },
             { driver: "Cagerman86", team: "Scuderia Ferrari HP", grid: 8, points: 2, status: "finished" },
-            { driver: "nikid1979", team: "Oracle Red Bull Racing", grid: 3, points: 0, status: "finished" },
+            { driver: "nikid1979", team: "Oracle Red Bull Racing", grid: 3, points: 1, position: 10, status: "finished" },
             { driver: "BrutusBonyap", team: "McLaren", grid: 4, points: 0, status: "DNF" }
           ]
         }
@@ -96,7 +97,25 @@ window.leagueData = {
       circuit: "Suzuka Circuit",
       country: "jp",
       countryName: "Japan",
-      events: [{ type: "R", placeholder: true, results: [] }]
+      events: [{
+        type: "R",
+        results: [
+          { driver: "Senne", team: "Aston Martin Aramco", grid: 2, points: 25, position: 1, status: "finished" },
+          { driver: "Niki", team: "Oracle Red Bull Racing", grid: 1, points: 18, position: 2, status: "finished" },
+          { driver: "Ace", team: "Alpine", grid: 9, points: 15, position: 3, status: "finished" },
+          { driver: "Sunlit", team: "Cadillac Formula 1 Team", grid: 10, points: 12, position: 4, status: "finished" },
+          { driver: "Brutus", team: "McLaren", grid: 4, points: 10, position: 5, status: "finished" },
+          { driver: "Seán", team: "Aston Martin Aramco", grid: 3, points: 8, position: 6, status: "finished" },
+          { driver: "Toethem", team: "Oracle Red Bull Racing", grid: 8, points: 6, position: 7, status: "finished" },
+          { driver: "Elmo", team: "Audi Revolut F1 Team", grid: 11, points: 4, position: 8, status: "finished" },
+          { driver: "Cageman", team: "Scuderia Ferrari HP", grid: 5, points: 2, position: 9, status: "finished" },
+          { driver: "Glennos", team: "Audi Revolut F1 Team", grid: 13, points: 1, position: 10, status: "finished" },
+          { driver: "Hoover", team: "Mercedes-AMG F1 Team", grid: 12, points: 0, position: 11, status: "finished" },
+          { driver: "Leeman", team: "McLaren", grid: 6, points: 0, status: "DNF" },
+          { driver: "Hocus", team: "Mercedes-AMG F1 Team", grid: 14, points: 0, status: "DNF" },
+          { driver: "Drippy", team: "Visa Cash App Racing Bulls", grid: 7, points: 0, status: "DNF" }
+        ]
+      }]
     },
     {
       round: 6,
