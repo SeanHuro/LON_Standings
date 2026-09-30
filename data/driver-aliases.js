@@ -17,5 +17,9 @@ window.driverAliases = {
   "I_Ieeman": "Leeman",
   "Guest21212143321": "Drippy",
   "Hooverznut": "Hoover",
-  "HocusBiokus": "Hocus"
+  "Hoovernaut": "Hoover",
+  "HocusBiokus": "Hocus",
+  "Psychomamba": "Psycho",
+  "seanhoura": "Seán",
+  "Cageman86": "Cageman"
 };
