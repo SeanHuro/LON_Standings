@@ -8,7 +8,7 @@
 window.leagueData = {
   season: "F1 2026",
   leagueName: "LON Racing League",
-  lastUpdated: "Calendar loaded · results through Round 6",
+  lastUpdated: "Calendar loaded · results through Round 7",
   scoring: {
     R: [25, 18, 15, 12, 10, 8, 6, 4, 2, 1],
     SR: [8, 7, 6, 5, 4, 3, 2, 1]
@@ -174,8 +174,46 @@ window.leagueData = {
       country: "ca",
       countryName: "Canada",
       events: [
-        { type: "SR", placeholder: true, results: [] },
-        { type: "R", placeholder: true, results: [] }
+        {
+          type: "SR",
+          results: [
+            { driver: "Senne", points: 8, position: 1, status: "finished" },
+            { driver: "Niki", points: 7, position: 2, status: "finished" },
+            { driver: "Brutus", points: 6, position: 3, status: "finished" },
+            { driver: "Ace", points: 5, position: 4, status: "finished" },
+            { driver: "Glennos", points: 4, position: 5, status: "finished" },
+            { driver: "Elmo", points: 3, position: 6, status: "finished" },
+            { driver: "Drippy", points: 2, position: 7, status: "finished" },
+            { driver: "Cageman", points: 1, position: 8, status: "finished" },
+            { driver: "Hocus", points: 0, position: 9, status: "finished" },
+            { driver: "Leeman", points: 0, status: "DNF" },
+            { driver: "Toethem", points: 0, status: "DNS" },
+            { driver: "Sunlit", points: 0, status: "DNS" },
+            { driver: "Seán", points: 0, status: "DNS" },
+            { driver: "Hoover", points: 0, status: "DNS" },
+            { driver: "Psycho", points: 0, status: "DNS" }
+          ]
+        },
+        {
+          type: "R",
+          results: [
+            { driver: "Senne", points: 25, position: 1, status: "finished" },
+            { driver: "Brutus", points: 18, position: 2, status: "finished" },
+            { driver: "Drippy", points: 15, position: 3, status: "finished" },
+            { driver: "Ace", points: 12, position: 4, status: "finished" },
+            { driver: "Elmo", points: 10, position: 5, status: "finished" },
+            { driver: "Leeman", points: 8, position: 6, status: "finished" },
+            { driver: "Cageman", points: 6, position: 7, status: "finished" },
+            { driver: "Hocus", points: 4, position: 8, status: "finished" },
+            { driver: "Niki", points: 2, position: 9, status: "finished" },
+            { driver: "Glennos", points: 0, position: 10, status: "finished" },
+            { driver: "Toethem", points: 0, status: "DNS" },
+            { driver: "Sunlit", points: 0, status: "DNS" },
+            { driver: "Seán", points: 0, status: "DNS" },
+            { driver: "Hoover", points: 0, status: "DNS" },
+            { driver: "Psycho", points: 0, status: "DNS" }
+          ]
+        }
       ]
     },
     {
