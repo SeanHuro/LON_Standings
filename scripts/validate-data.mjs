@@ -33,7 +33,7 @@ for (const race of data.races || []) {
       if (seenDrivers.has(name)) errors.push(`round ${race.round} ${event.type} repeats ${name}`);
       seenDrivers.add(name);
       if (!roster.has(name)) errors.push(`${name} is not in the driver roster`);
-      if (!["finished", "DNF", "DNS"].includes(result.status)) errors.push(`${name} has invalid status ${result.status}`);
+      if (!["finished", "DNF", "DNS", "DSQ"].includes(result.status)) errors.push(`${name} has invalid status ${result.status}`);
       if (result.status === "finished" && !Number.isFinite(Number(result.points))) errors.push(`${name} has invalid points`);
     }
   }

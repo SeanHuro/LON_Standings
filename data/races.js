@@ -206,7 +206,7 @@ window.leagueData = {
             { driver: "Cageman", points: 6, position: 7, status: "finished" },
             { driver: "Hocus", points: 4, position: 8, status: "finished" },
             { driver: "Niki", points: 2, position: 9, status: "finished" },
-            { driver: "Glennos", points: 0, position: 10, status: "finished" },
+            { driver: "Glennos", points: 0, status: "DSQ" },
             { driver: "Toethem", points: 0, status: "DNS" },
             { driver: "Sunlit", points: 0, status: "DNS" },
             { driver: "Seán", points: 0, status: "DNS" },
