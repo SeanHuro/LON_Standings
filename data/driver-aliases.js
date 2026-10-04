@@ -4,6 +4,7 @@
  */
 window.driverAliases = {
   "Senne.the.great": "Senne",
+  "Senne_the_great": "Senne",
   "The_Acehole": "Ace",
   "great_elmo": "Elmo",
   "toethem": "Toethem",

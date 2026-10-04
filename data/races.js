@@ -8,7 +8,7 @@
 window.leagueData = {
   season: "F1 2026",
   leagueName: "LON Racing League",
-  lastUpdated: "Calendar loaded · results through Round 7",
+  lastUpdated: "Calendar loaded · results through Round 8",
   scoring: {
     R: [25, 18, 15, 12, 10, 8, 6, 4, 2, 1],
     SR: [8, 7, 6, 5, 4, 3, 2, 1]
@@ -222,7 +222,26 @@ window.leagueData = {
       circuit: "Circuit de Monaco",
       country: "mc",
       countryName: "Monaco",
-      events: [{ type: "R", placeholder: true, results: [] }]
+      events: [{
+        type: "R",
+        results: [
+          { driver: "Brutus", team: "McLaren", grid: 3, points: 25, position: 1, status: "finished" },
+          { driver: "Senne", team: "Aston Martin Aramco", grid: 1, points: 18, position: 2, status: "finished" },
+          { driver: "Seán", team: "Aston Martin Aramco", grid: 7, points: 15, position: 3, status: "finished" },
+          { driver: "Niki", team: "Oracle Red Bull Racing", grid: 5, points: 12, position: 4, status: "finished" },
+          { driver: "Glennos", team: "Audi Revolut F1 Team", grid: 9, points: 10, position: 5, status: "finished" },
+          { driver: "Ace", team: "Alpine", grid: 6, points: 8, position: 6, status: "finished" },
+          { driver: "Toethem", team: "Oracle Red Bull Racing", grid: 10, points: 6, position: 7, status: "DNF" },
+          { driver: "Cageman", team: "Scuderia Ferrari HP", grid: 8, points: 4, position: 8, status: "DNF" },
+          { driver: "Drippy", team: "Visa Cash App Racing Bulls", grid: 2, points: 2, position: 9, status: "DNF" },
+          { driver: "Leeman", team: "McLaren", grid: 4, points: 1, position: 10, status: "DNF" },
+          { driver: "Elmo", team: "Audi Revolut F1 Team", points: 0, status: "DNS" },
+          { driver: "Sunlit", team: "Cadillac Formula 1 Team", points: 0, status: "DNS" },
+          { driver: "Hoover", team: "Mercedes-AMG F1 Team", points: 0, status: "DNS" },
+          { driver: "Hocus", team: "Mercedes-AMG F1 Team", points: 0, status: "DNS" },
+          { driver: "Psycho", team: "Audi Revolut F1 Team", points: 0, status: "DNS" }
+        ]
+      }]
     },
     {
       round: 9,
