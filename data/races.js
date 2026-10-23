@@ -8,7 +8,7 @@
 window.leagueData = {
   season: "F1 2026",
   leagueName: "LON Racing League",
-  lastUpdated: "Calendar loaded · results through Round 8",
+  lastUpdated: "Calendar loaded · results through Round 10",
   scoring: {
     R: [25, 18, 15, 12, 10, 8, 6, 4, 2, 1],
     SR: [8, 7, 6, 5, 4, 3, 2, 1]
@@ -249,7 +249,26 @@ window.leagueData = {
       circuit: "Circuit de Barcelona-Catalunya",
       country: "es",
       countryName: "Spain",
-      events: [{ type: "R", placeholder: true, results: [] }]
+      events: [{
+        type: "R",
+        results: [
+          { driver: "Drippy", points: 25, position: 1, status: "finished" },
+          { driver: "Seán", points: 18, position: 2, status: "finished" },
+          { driver: "Ace", points: 15, position: 3, status: "finished" },
+          { driver: "Niki", points: 12, position: 4, status: "finished" },
+          { driver: "Senne", points: 10, position: 5, status: "finished" },
+          { driver: "Sunlit", points: 8, position: 6, status: "finished" },
+          { driver: "Glennos", points: 6, position: 7, status: "finished" },
+          { driver: "Leeman", points: 4, position: 8, status: "finished" },
+          { driver: "Cageman", points: 2, position: 9, status: "finished" },
+          { driver: "Brutus", points: 1, position: 10, status: "finished" },
+          { driver: "Hoover", points: 0, position: 11, status: "finished" },
+          { driver: "Elmo", points: 0, status: "DNF" },
+          { driver: "Hocus", points: 0, status: "DNF" },
+          { driver: "Toethem", points: 0, status: "DNF" },
+          { driver: "Psycho", points: 0, status: "DNS" }
+        ]
+      }]
     },
     {
       round: 10,
@@ -257,7 +276,26 @@ window.leagueData = {
       circuit: "Red Bull Ring",
       country: "at",
       countryName: "Austria",
-      events: [{ type: "R", placeholder: true, results: [] }]
+      events: [{
+        type: "R",
+        results: [
+          { driver: "Toethem", points: 25, position: 1, status: "finished" },
+          { driver: "Ace", points: 18, position: 2, status: "finished" },
+          { driver: "Brutus", points: 15, position: 3, status: "finished" },
+          { driver: "Niki", points: 12, position: 4, status: "finished" },
+          { driver: "Senne", points: 10, position: 5, status: "finished" },
+          { driver: "Elmo", points: 8, position: 6, status: "finished" },
+          { driver: "Leeman", points: 6, position: 7, status: "finished" },
+          { driver: "Cageman", points: 4, position: 8, status: "finished" },
+          { driver: "Drippy", points: 2, position: 9, status: "finished" },
+          { driver: "Glennos", points: 1, position: 10, status: "finished" },
+          { driver: "Hoover", points: 0, position: 11, status: "finished" },
+          { driver: "Seán", points: 0, position: 12, status: "finished" },
+          { driver: "Sunlit", points: 0, status: "DNF" },
+          { driver: "Hocus", points: 0, status: "DNF" },
+          { driver: "Psycho", points: 0, status: "DNS" }
+        ]
+      }]
     },
     {
       round: 11,
