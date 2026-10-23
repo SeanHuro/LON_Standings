@@ -20,7 +20,7 @@ window.driverAliases = {
   "Hooverznut": "Hoover",
   "Hoovernaut": "Hoover",
   "HocusBiokus": "Hocus",
-  "Emmerwater": "Sunlit",
+  "Emmerwater": "Emmer",
   "Psychomamba": "Psycho",
   "seanhoura": "Seán",
   "Cageman86": "Cageman"

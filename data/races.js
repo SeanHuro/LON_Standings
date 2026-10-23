@@ -19,6 +19,7 @@ window.leagueData = {
     { driver: "great_elmo", team: "Audi Revolut F1 Team" },
     { driver: "toethem", team: "Oracle Red Bull Racing" },
     { driver: "sunlit-length67", team: "Cadillac Formula 1 Team" },
+    { driver: "Emmer", team: "Cadillac Formula 1 Team" },
     { driver: "Glennos007", team: "Audi Revolut F1 Team" },
     { driver: "XIDrippyIX", team: "Visa Cash App Racing Bulls" },
     { driver: "seantrucura", team: "Aston Martin Aramco" },
@@ -264,9 +265,10 @@ window.leagueData = {
           { driver: "Glennos", points: 1, position: 10, status: "finished" },
           { driver: "Hoover", points: 0, position: 11, status: "finished" },
           { driver: "Seán", points: 0, position: 12, status: "finished" },
-          { driver: "Sunlit", points: 0, status: "DNF" },
+          { driver: "Emmer", points: 0, status: "DNF" },
           { driver: "Hocus", points: 0, status: "DNF" },
-          { driver: "Psycho", points: 0, status: "DNS" }
+          { driver: "Psycho", points: 0, status: "DNS" },
+          { driver: "Sunlit", points: 0, status: "DNS" }
         ]
       }]
     },
@@ -284,7 +286,7 @@ window.leagueData = {
           { driver: "Ace", points: 15, position: 3, status: "finished" },
           { driver: "Niki", points: 12, position: 4, status: "finished" },
           { driver: "Senne", points: 10, position: 5, status: "finished" },
-          { driver: "Sunlit", points: 8, position: 6, status: "finished" },
+          { driver: "Emmer", points: 8, position: 6, status: "finished" },
           { driver: "Glennos", points: 6, position: 7, status: "finished" },
           { driver: "Leeman", points: 4, position: 8, status: "finished" },
           { driver: "Cageman", points: 2, position: 9, status: "finished" },
@@ -293,7 +295,8 @@ window.leagueData = {
           { driver: "Elmo", points: 0, status: "DNF" },
           { driver: "Hocus", points: 0, status: "DNF" },
           { driver: "Toethem", points: 0, status: "DNF" },
-          { driver: "Psycho", points: 0, status: "DNS" }
+          { driver: "Psycho", points: 0, status: "DNS" },
+          { driver: "Sunlit", points: 0, status: "DNS" }
         ]
       }]
     },
