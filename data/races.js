@@ -252,33 +252,6 @@ window.leagueData = {
       events: [{
         type: "R",
         results: [
-          { driver: "Drippy", points: 25, position: 1, status: "finished" },
-          { driver: "Seán", points: 18, position: 2, status: "finished" },
-          { driver: "Ace", points: 15, position: 3, status: "finished" },
-          { driver: "Niki", points: 12, position: 4, status: "finished" },
-          { driver: "Senne", points: 10, position: 5, status: "finished" },
-          { driver: "Sunlit", points: 8, position: 6, status: "finished" },
-          { driver: "Glennos", points: 6, position: 7, status: "finished" },
-          { driver: "Leeman", points: 4, position: 8, status: "finished" },
-          { driver: "Cageman", points: 2, position: 9, status: "finished" },
-          { driver: "Brutus", points: 1, position: 10, status: "finished" },
-          { driver: "Hoover", points: 0, position: 11, status: "finished" },
-          { driver: "Elmo", points: 0, status: "DNF" },
-          { driver: "Hocus", points: 0, status: "DNF" },
-          { driver: "Toethem", points: 0, status: "DNF" },
-          { driver: "Psycho", points: 0, status: "DNS" }
-        ]
-      }]
-    },
-    {
-      round: 10,
-      name: "Austrian Grand Prix",
-      circuit: "Red Bull Ring",
-      country: "at",
-      countryName: "Austria",
-      events: [{
-        type: "R",
-        results: [
           { driver: "Toethem", points: 25, position: 1, status: "finished" },
           { driver: "Ace", points: 18, position: 2, status: "finished" },
           { driver: "Brutus", points: 15, position: 3, status: "finished" },
@@ -293,6 +266,33 @@ window.leagueData = {
           { driver: "Seán", points: 0, position: 12, status: "finished" },
           { driver: "Sunlit", points: 0, status: "DNF" },
           { driver: "Hocus", points: 0, status: "DNF" },
+          { driver: "Psycho", points: 0, status: "DNS" }
+        ]
+      }]
+    },
+    {
+      round: 10,
+      name: "Austrian Grand Prix",
+      circuit: "Red Bull Ring",
+      country: "at",
+      countryName: "Austria",
+      events: [{
+        type: "R",
+        results: [
+          { driver: "Drippy", points: 25, position: 1, status: "finished" },
+          { driver: "Seán", points: 18, position: 2, status: "finished" },
+          { driver: "Ace", points: 15, position: 3, status: "finished" },
+          { driver: "Niki", points: 12, position: 4, status: "finished" },
+          { driver: "Senne", points: 10, position: 5, status: "finished" },
+          { driver: "Sunlit", points: 8, position: 6, status: "finished" },
+          { driver: "Glennos", points: 6, position: 7, status: "finished" },
+          { driver: "Leeman", points: 4, position: 8, status: "finished" },
+          { driver: "Cageman", points: 2, position: 9, status: "finished" },
+          { driver: "Brutus", points: 1, position: 10, status: "finished" },
+          { driver: "Hoover", points: 0, position: 11, status: "finished" },
+          { driver: "Elmo", points: 0, status: "DNF" },
+          { driver: "Hocus", points: 0, status: "DNF" },
+          { driver: "Toethem", points: 0, status: "DNF" },
           { driver: "Psycho", points: 0, status: "DNS" }
         ]
       }]
